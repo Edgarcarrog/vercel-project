@@ -1,26 +1,28 @@
 const express = require("express");
 const { Router } = require("express");
+const cors = require("cors");
 
 const app = express();
 const router = Router();
 
 app.use(express.json());
+app.use(cors());
 
 router
   .get("/", (req, res) => {
-    res.send("get");
+    res.status(200).send("getting");
   })
 
   .post("/", (req, res) => {
-    res.send("post", req.body);
+    res.status(200).send("postting");
   })
 
   .put("/", (req, res) => {
-    res.send("put");
+    res.status(200).send("putting");
   })
 
   .delete("/", (req, res) => {
-    res.send("delete");
+    res.status(200).send("deleting");
   });
 
 app.use("/", router);
